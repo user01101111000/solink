@@ -1,0 +1,32 @@
+.home_layout {
+  min-height: 100dvh;
+  width: 100%;
+
+  overflow-x: hidden;
+  padding-inline: 5%;
+
+  @include centerBoth();
+
+  background: linear-gradient(
+    45deg,
+    hsl(270, 50%, 20%),
+    hsl(270, 70%, 18%),
+    hsl(0, 0%, 8%),
+    hsl(270, 70%, 18%),
+    hsl(270, 70%, 18%)
+  );
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

@@ -1,0 +1,12 @@
+.normal_button {
+  @extend .btn;
+
+  background-color: $button-color-purple;
+  color: white;
+
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+
+  padding: 1rem 1.5rem !important;
+}
