@@ -1,9 +1,13 @@
+import useAuthRegister from "../../../hooks/api/useAuthRegister";
 import IRegister from "../../../interfaces/components/IRegister";
-import { pageVariantsZoom } from "../../../utils/motion_variables";
+import { IRegisterValues } from "../../../interfaces/services/auth/register";
+import { pageVariantsZoom } from "../../../utils/framer_motion/motion_variables";
 import AuthBox from "../AuthBox";
 import { motion } from "framer-motion";
 
 const Register = (props: IRegister) => {
+  const { mutateAsync: register } = useAuthRegister();
+
   return (
     <motion.article
       initial="initial"
@@ -15,10 +19,8 @@ const Register = (props: IRegister) => {
     >
       <AuthBox
         label="Register"
-        fn={async (values) => {
-          setTimeout(() => {
-            console.log(values);
-          }, 2000);
+        fn={async (values: IRegisterValues) => {
+          await register(values);
         }}
         setShowRegister={props.setShowRegister}
       />

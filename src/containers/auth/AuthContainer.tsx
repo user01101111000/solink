@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { pageVariantsZoom } from "../../utils/motion_variables";
+import { pageVariantsZoom } from "../../utils/framer_motion/motion_variables";
 import { useState } from "react";
 import Register from "../../components/auth/register/Register";
 import Login from "../../components/auth/login/Login";

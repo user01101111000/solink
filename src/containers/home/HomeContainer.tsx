@@ -1,6 +1,6 @@
 import NormalButton from "../../components/ui/Button/NormalButton";
 import { motion } from "framer-motion";
-import { pageVariantsZoom } from "../../utils/motion_variables";
+import { pageVariantsZoom } from "../../utils/framer_motion/motion_variables";
 import { useNavigate } from "react-router-dom";
 
 const HomeContainer = () => {

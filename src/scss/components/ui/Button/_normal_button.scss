@@ -6,7 +6,13 @@
 
   font-weight: 800;
   letter-spacing: 1px;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 3vw, 1.5rem);
 
   padding: 1rem 1.5rem !important;
+}
+
+@media screen and (max-width: 500px) {
+  .normal_button {
+    padding: 0.8rem 1rem !important;
+  }
 }

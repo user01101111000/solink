@@ -1,14 +1,8 @@
 .auth_box {
   @include centerBoth(column);
+  @include glassmorphism;
 
   gap: 2rem;
-
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 15px;
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   padding: 1.5rem 1rem;
   width: 30rem;
@@ -53,7 +47,8 @@
           outline: none;
           border: none;
           background: transparent;
-          font-size: 1.2rem;
+          font-size: 1rem;
+          font-weight: 600;
 
           color: white;
 
@@ -90,6 +85,14 @@
       color: white;
 
       border: 0.5px solid rgba(255, 255, 255, 0.2) !important;
+
+      transition: all 0.2s ease-in-out;
+    }
+
+    .loading_button {
+      opacity: 0.5;
+      user-select: none !important;
+      pointer-events: none !important;
     }
   }
 

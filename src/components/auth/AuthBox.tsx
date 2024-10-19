@@ -3,7 +3,7 @@ import IAuthBox from "../../interfaces/components/AuthBox";
 import { MdOutlineEmail, MdLockOutline } from "react-icons/md";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
-import { authSchema } from "../../utils/schema";
+import { authSchema } from "../../utils/yup/schema";
 import { useState } from "react";
 
 const AuthBox = (props: IAuthBox) => {
@@ -87,7 +87,7 @@ const AuthBox = (props: IAuthBox) => {
           )}
         </div>
 
-        <button type="submit" disabled={isSubmitting}>
+        <button type="submit" disabled={isSubmitting} className={isSubmitting ? "loading_button" : ""}>
           {props.label}
         </button>
       </form>

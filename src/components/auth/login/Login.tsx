@@ -1,9 +1,13 @@
+import useAuthLogin from "../../../hooks/api/useAuthLogin";
 import ILogin from "../../../interfaces/components/ILogin";
-import { pageVariantsZoom } from "../../../utils/motion_variables";
+import { ILoginValues } from "../../../interfaces/services/auth/login";
+import { pageVariantsZoom } from "../../../utils/framer_motion/motion_variables";
 import AuthBox from "../AuthBox";
 import { motion } from "framer-motion";
 
 const Login = (props: ILogin) => {
+  const { mutateAsync: login } = useAuthLogin();
+
   return (
     <motion.article
       initial="initial"
@@ -15,10 +19,8 @@ const Login = (props: ILogin) => {
     >
       <AuthBox
         label="Login"
-        fn={async (values) => {
-          setTimeout(() => {
-            console.log(values);
-          }, 2000);
+        fn={async (values: ILoginValues) => {
+          await login(values);
         }}
         setShowRegister={props.setShowRegister}
       />
