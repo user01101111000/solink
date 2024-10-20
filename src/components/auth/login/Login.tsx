@@ -23,6 +23,7 @@ const Login = (props: ILogin) => {
           await login(values);
         }}
         setShowRegister={props.setShowRegister}
+        isRegister={false}
       />
     </motion.article>
   );

@@ -16,4 +16,16 @@ const getAxiosAuthLoginInstance = (): AxiosInstance => {
   });
 };
 
-export { getAxiosAuthRegisterInstance, getAxiosAuthLoginInstance };
+const getAxiosUsersInstance = (): AxiosInstance => {
+  return axios.create({
+    baseURL: `https://firestore.googleapis.com/v1/projects/${
+      import.meta.env.VITE_PROJECT_ID
+    }/databases/(default)/documents/users`,
+  });
+};
+
+export {
+  getAxiosAuthRegisterInstance,
+  getAxiosAuthLoginInstance,
+  getAxiosUsersInstance,
+};

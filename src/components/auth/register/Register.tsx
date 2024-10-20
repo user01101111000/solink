@@ -23,6 +23,7 @@ const Register = (props: IRegister) => {
           await register(values);
         }}
         setShowRegister={props.setShowRegister}
+        isRegister
       />
     </motion.article>
   );

@@ -1,6 +1,7 @@
 interface IRegisterData {
   email: string;
   password: string;
+  displayName?: string;
   returnSecureToken: boolean;
 }
 
@@ -14,6 +15,7 @@ interface IRegisterResponse {
 }
 
 interface IRegisterValues {
+  username: string;
   email: string;
   password: string;
 }

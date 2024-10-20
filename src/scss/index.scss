@@ -2,6 +2,9 @@
 @import "./base/placeholders";
 @import "./base/global";
 @import "./layout/homeLayout";
+@import "./layout/authLayout";
 @import "./containers/home/home";
 @import "./components/ui/Button/normal_button";
-@import "./components/auth/auth_box"
+@import "./components/auth/auth_box";
+@import "./components/auth/register/register";
+@import "./components/auth/login/login";
