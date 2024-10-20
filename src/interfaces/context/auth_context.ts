@@ -1,16 +1,15 @@
-interface IAuthContext {
+export interface IAuthContext {
   toks: ITOK | null;
   login: (tokens: { so_i: string; so_r: string }) => void;
   logout: () => void;
 }
 
-interface IAuthContextProvider {
+export interface IAuthContextProvider {
   children: React.ReactNode;
 }
 
-interface ITOK {
+export interface ITOK {
   so_i: string;
   so_r: string;
+  so_id: string;
 }
-
-export { IAuthContext, IAuthContextProvider, ITOK };

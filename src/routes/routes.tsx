@@ -35,7 +35,7 @@ const routes: CustomRouteObject[] = [
   },
 
   {
-    path: "/home",
+    path: "/home/:id",
     element: <HomeLayout />,
     auth: true,
     children: [
@@ -44,6 +44,11 @@ const routes: CustomRouteObject[] = [
         element: <Home />,
       },
     ],
+  },
+
+  {
+    path: "*",
+    element: <div>Not found</div>,
   },
 ];
 

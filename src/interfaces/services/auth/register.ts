@@ -1,11 +1,11 @@
-interface IRegisterData {
+export interface IRegisterData {
   email: string;
   password: string;
   displayName?: string;
   returnSecureToken: boolean;
 }
 
-interface IRegisterResponse {
+export interface IRegisterResponse {
   idToken: string;
   email: string;
   refreshToken: string;
@@ -14,10 +14,52 @@ interface IRegisterResponse {
   kind?: string;
 }
 
-interface IRegisterValues {
+export interface IRegisterValues {
   username: string;
   email: string;
   password: string;
 }
 
-export { IRegisterData, IRegisterResponse, IRegisterValues };
+export interface ILinkData {
+  fields: {
+    id: {
+      stringValue: string;
+    };
+    email: {
+      stringValue: string;
+    };
+    username: {
+      stringValue: string;
+    };
+    fullName: {
+      stringValue: string;
+    };
+    location: {
+      stringValue: string;
+    };
+    avatar: {
+      stringValue: string;
+    };
+    about: {
+      stringValue: string;
+    };
+    links: {
+      arrayValue: {
+        values: [
+          {
+            mapValue: {
+              fields: {
+                label: {
+                  stringValue: string;
+                };
+                url: {
+                  stringValue: string;
+                };
+              };
+            };
+          }
+        ];
+      };
+    };
+  };
+}

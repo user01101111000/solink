@@ -16,11 +16,11 @@ const getAxiosAuthLoginInstance = (): AxiosInstance => {
   });
 };
 
-const getAxiosUsersInstance = (): AxiosInstance => {
+const getAxiosLinksInstance = (): AxiosInstance => {
   return axios.create({
     baseURL: `https://firestore.googleapis.com/v1/projects/${
       import.meta.env.VITE_PROJECT_ID
-    }/databases/(default)/documents/users`,
+    }/databases/(default)/documents/links`,
   });
 };
 
@@ -31,9 +31,25 @@ const getAxiosRefreshTokenInstance = (): AxiosInstance =>
     }`,
   });
 
+const getAxiosVerifyUserInstance = (): AxiosInstance =>
+  axios.create({
+    baseURL: `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${
+      import.meta.env.VITE_API_KEY
+    }`,
+  });
+
+const getAxiosStorageInstance = (): AxiosInstance =>
+  axios.create({
+    baseURL: `https://firebasestorage.googleapis.com/v0/b/${
+      import.meta.env.VITE_PROJECT_ID
+    }.appspot.com/o`,
+  });
+
 export {
   getAxiosAuthRegisterInstance,
   getAxiosAuthLoginInstance,
-  getAxiosUsersInstance,
+  getAxiosLinksInstance,
   getAxiosRefreshTokenInstance,
+  getAxiosVerifyUserInstance,
+  getAxiosStorageInstance,
 };

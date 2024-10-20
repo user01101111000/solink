@@ -4,9 +4,15 @@ import {
   ILoginResponse,
   ILoginValues,
 } from "../../interfaces/services/auth/login";
-import { getAxiosAuthLoginInstance } from "../axios_instance";
+import {
+  getAxiosAuthLoginInstance,
+  getAxiosLinksInstance,
+} from "../axios_instance";
+import { ILinkData } from "../../interfaces/services/auth/register";
 
-const login = async (values: ILoginValues): Promise<ILoginResponse> => {
+const login = async (
+  values: ILoginValues
+): Promise<{ data: ILoginResponse; linkData: ILinkData }> => {
   const loginData: ILoginData = {
     email: values.email,
     password: values.password,
@@ -16,7 +22,12 @@ const login = async (values: ILoginValues): Promise<ILoginResponse> => {
   const response: AxiosResponse<ILoginResponse> =
     await getAxiosAuthLoginInstance().post("", loginData);
 
-  return response.data;
+  const data = response.data;
+
+  const responseUserInfo: AxiosResponse<ILinkData> =
+    await getAxiosLinksInstance().get("/" + data.localId);
+
+  return { data, linkData: responseUserInfo.data };
 };
 
 export default login;

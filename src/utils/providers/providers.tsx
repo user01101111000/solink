@@ -1,6 +1,8 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import { AuthContextProvider } from "../../context/AuthContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider } from "react-redux";
+import store from "../../lib/store";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,7 +15,11 @@ const queryClient = new QueryClient({
 const AllProviders: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <AuthContextProvider>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </Provider>
     </AuthContextProvider>
   );
 };

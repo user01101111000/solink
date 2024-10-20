@@ -13,3 +13,17 @@
   border: 0.5px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+@mixin circlea($height: 3rem, $width: 3rem) {
+  border-radius: 50%;
+  height: $height;
+  width: $width;
+  overflow: hidden;
+}
+
+@mixin circlei() {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

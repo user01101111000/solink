@@ -10,3 +10,11 @@ $button-color-purple: #6f36f5;
   background-color: $button-color-purple;
   color: white;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+}

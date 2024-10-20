@@ -1,0 +1,29 @@
+.main {
+  @include centerBoth(column);
+  gap: 1.5rem;
+
+  color: white;
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  p {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    line-height: 1.5;
+
+    span {
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+  }
+}

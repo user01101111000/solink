@@ -1,11 +1,11 @@
 .home_layout {
-  min-height: 100dvh;
+  height: 100dvh;
   width: 100%;
 
   @include centerBoth();
 
   overflow-x: hidden;
-  padding-inline: 5%;
+  padding: 2% 5%;
 
   background: linear-gradient(
     45deg,

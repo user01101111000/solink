@@ -1,9 +1,10 @@
 import { AxiosResponse } from "axios";
 import {
   getAxiosAuthRegisterInstance,
-  getAxiosUsersInstance,
+  getAxiosLinksInstance,
 } from "../axios_instance";
 import {
+  ILinkData,
   IRegisterData,
   IRegisterResponse,
   IRegisterValues,
@@ -11,7 +12,7 @@ import {
 
 const register = async (
   values: IRegisterValues
-): Promise<IRegisterResponse> => {
+): Promise<{ data: IRegisterResponse; linkData: ILinkData }> => {
   const registerData: IRegisterData = {
     email: values.email,
     password: values.password,
@@ -24,7 +25,7 @@ const register = async (
 
   const data = response.data;
 
-  const userInfo = {
+  const link: ILinkData = {
     fields: {
       id: {
         stringValue: data.localId,
@@ -35,12 +36,43 @@ const register = async (
       username: {
         stringValue: values.username,
       },
+      avatar: {
+        stringValue:
+          "https://firebasestorage.googleapis.com/v0/b/test-26a3b.appspot.com/o/common%2Fpp.webp?alt=media&token=e5029d8e-439c-4de7-8b0e-2f3da589122b",
+      },
+      fullName: {
+        stringValue: "",
+      },
+      location: {
+        stringValue: "",
+      },
+      about: {
+        stringValue: "",
+      },
+      links: {
+        arrayValue: {
+          values: [
+            {
+              mapValue: {
+                fields: {
+                  label: {
+                    stringValue: "",
+                  },
+                  url: {
+                    stringValue: "",
+                  },
+                },
+              },
+            },
+          ],
+        },
+      },
     },
   };
 
-  await getAxiosUsersInstance().patch("/" + data.localId, userInfo);
+  await getAxiosLinksInstance().patch("/" + data.localId, link);
 
-  return data;
+  return { data: data, linkData: link };
 };
 
 export default register;

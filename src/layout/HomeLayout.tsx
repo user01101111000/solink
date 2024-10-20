@@ -4,25 +4,25 @@ import useRefreshToken from "../hooks/api/useRefreshToken";
 import { decryptToken } from "../utils/auth/cryptoID";
 
 const HomeLayout = () => {
-  // const { mutate: refreshToken } = useRefreshToken();
+  const { mutate: refreshToken, isPending } = useRefreshToken();
 
-  // useEffect(() => {
-  //   const refresh_token = decryptToken(
-  //     JSON.parse(localStorage.getItem("so_i&r")!).so_r
-  //   );
+  useEffect(() => {
+    const refresh_token = decryptToken(
+      JSON.parse(localStorage.getItem("so_i&r")!).so_r
+    );
 
-  //   refreshToken(refresh_token);
+    refreshToken(refresh_token);
 
-  //   const interval = setInterval(() => {
-  //     refreshToken(refresh_token);
-  //   }, 3600 * 1000);
+    const interval = setInterval(() => {
+      refreshToken(refresh_token);
+    }, 3600 * 1000);
 
-  //   return () => clearInterval(interval);
-  // }, []);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <main className="home_layout">
-      <Outlet />
+      {isPending ? <div>Loading...</div> : <Outlet />}
     </main>
   );
 };

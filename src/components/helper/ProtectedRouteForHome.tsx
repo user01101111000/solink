@@ -5,7 +5,7 @@ import React from "react";
 const ProtectedRouteForHome = ({ children }: { children: React.ReactNode }) => {
   const { toks } = useAuth();
 
-  if (toks) return <Navigate to={"/home"} />;
+  if (toks) return <Navigate to={"/home/" + toks.so_id} />;
 
   return children;
 };
