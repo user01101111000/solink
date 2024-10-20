@@ -24,8 +24,16 @@ const getAxiosUsersInstance = (): AxiosInstance => {
   });
 };
 
+const getAxiosRefreshTokenInstance = (): AxiosInstance =>
+  axios.create({
+    baseURL: `https://securetoken.googleapis.com/v1/token?key=${
+      import.meta.env.VITE_API_KEY
+    }`,
+  });
+
 export {
   getAxiosAuthRegisterInstance,
   getAxiosAuthLoginInstance,
   getAxiosUsersInstance,
+  getAxiosRefreshTokenInstance,
 };
