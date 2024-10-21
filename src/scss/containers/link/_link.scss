@@ -1,3 +1,55 @@
+.link_container_wrapper {
+  height: 100dvh;
+  width: 100%;
+
+  @include centerBoth(column);
+
+  gap: 1rem;
+
+  overflow-x: hidden;
+  padding: 2% 5%;
+
+  background: linear-gradient(
+    45deg,
+    hsl(270, 50%, 20%),
+    hsl(270, 70%, 18%),
+    hsl(0, 0%, 8%),
+    hsl(270, 70%, 18%),
+    hsl(270, 70%, 18%)
+  );
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+
+  .link_container_error {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    user-select: none;
+  }
+
+  button {
+    @extend .btn;
+    background-color: $button-color-purple;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    user-select: none;
+    cursor: pointer;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .link_container {
   width: 30rem;
   display: flex;

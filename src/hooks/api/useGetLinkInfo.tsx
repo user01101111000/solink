@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import getLinkInfo from "../../service/info/getLinkInfo";
 
-const useGetLinkInfo = (id: string) => {
+const useGetLinkInfo = () => {
   return useQuery({
-    queryKey: ["linkInfo", id],
-    queryFn: () => getLinkInfo(id),
+    queryKey: ["linkInfos"],
+    queryFn: getLinkInfo,
   });
 };
 

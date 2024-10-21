@@ -235,9 +235,7 @@ const HomeContainer = () => {
           <button
             type="button"
             className="preview_button"
-            onClick={() =>
-              navigate(`/home/${userInfo.id}/${userInfo.username}`)
-            }
+            onClick={() => navigate(`/@${userInfo.username}`)}
           >
             Preview
           </button>

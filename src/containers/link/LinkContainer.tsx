@@ -19,22 +19,24 @@ const LinkContainer = (props: { data: ILinkData }) => {
   ));
 
   return (
-    <div className="link_container">
-      <figure>
-        <img
-          src={props.data.fields.avatar.stringValue}
-          alt={props.data.fields.username.stringValue}
-        />
-      </figure>
+    <section className="link_container_wrapper">
+      <div className="link_container">
+        <figure>
+          <img
+            src={props.data.fields.avatar.stringValue}
+            alt={props.data.fields.username.stringValue}
+          />
+        </figure>
 
-      <h1>{props.data.fields.fullName.stringValue}</h1>
+        <h1>{props.data.fields.fullName.stringValue}</h1>
 
-      <h2>{props.data.fields.location.stringValue}</h2>
+        <h2>{props.data.fields.location.stringValue}</h2>
 
-      <p>{props.data.fields.about.stringValue}</p>
+        <p>{props.data.fields.about.stringValue}</p>
 
-      <ul>{links}</ul>
-    </div>
+        <ul>{links}</ul>
+      </div>
+    </section>
   );
 };
 

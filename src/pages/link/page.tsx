@@ -1,22 +1,42 @@
 import LinkContainer from "../../containers/link/LinkContainer";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useGetLinkInfo from "../../hooks/api/useGetLinkInfo";
 import LoadingImageComponent from "../../components/ui/Loading/Loading";
 import { ILinkData } from "../../interfaces/services/auth/register";
 
 const Link = () => {
-  const { id, username } = useParams();
+  const { username } = useParams();
+  const navigate = useNavigate();
+  const { data, isLoading, isError } = useGetLinkInfo();
 
-  const { data, isLoading, isError } = useGetLinkInfo(id as string);
+  if (isLoading)
+    return (
+      <div className="link_container_wrapper">
+        <LoadingImageComponent size="1rem" />
+      </div>
+    );
 
-  if (isLoading) return <LoadingImageComponent size="1rem" />;
+  if (isError)
+    return (
+      <div className="link_container_wrapper">
+        <h1 className="link_container_error">Link box not found !!!</h1>
+        <button onClick={() => navigate("/")}>Go Back</button>
+      </div>
+    );
 
-  if (isError) return <div>error</div>;
+  const uniqueData = data.find(
+    (x) => x.fields.username.stringValue == username?.split("@")[1]
+  );
 
-  if (data?.fields.username.stringValue != username)
-    return <div>Invalid Link</div>;
+  if (!uniqueData)
+    return (
+      <div className="link_container_wrapper">
+        <h1 className="link_container_error">Link box not found !!!</h1>
+        <button onClick={() => navigate("/")}>Go Back</button>
+      </div>
+    );
 
-  return <LinkContainer data={data as ILinkData} />;
+  return <LinkContainer data={uniqueData as ILinkData} />;
 };
 
 export default Link;

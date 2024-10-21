@@ -44,13 +44,12 @@ const routes: CustomRouteObject[] = [
         index: true,
         element: <Home />,
       },
-      {
-        path: "/home/:id/:username",
-        element: <Link />,
-      },
     ],
   },
-
+  {
+    path: "/:username",
+    element: <Link />,
+  },
   {
     path: "*",
     element: <div>Not found</div>,
