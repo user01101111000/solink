@@ -235,9 +235,15 @@ const HomeContainer = () => {
           <button
             type="button"
             className="preview_button"
-            onClick={() => navigate(`/@${userInfo.username}`)}
+            onClick={() => {
+              navigator.clipboard.writeText(
+                window.location.href.split("home")[0] + `@${userInfo.username}`
+              );
+
+              navigate(`/@${userInfo.username}`);
+            }}
           >
-            Preview
+            Preview and copy URL
           </button>
         )}
       </div>

@@ -2,13 +2,13 @@
   @include centerBoth(column);
   @include glassmorphism;
 
-  gap: 2rem;
+  gap: clamp(1rem, 5vw, 2rem);
 
   padding: 1.5rem 1rem;
   width: 100%;
 
   h1 {
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 5vw, 2rem);
     text-align: center;
     color: rgba(255, 255, 255, 0.9);
     font-weight: 800;

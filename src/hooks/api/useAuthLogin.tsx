@@ -5,7 +5,6 @@ import useAuth from "../context/useAuth";
 import { useNavigate } from "react-router-dom";
 import { encryptToken } from "../../utils/auth/cryptoID";
 import { ITOK } from "../../interfaces/context/auth_context";
-import { ILinkData } from "../../interfaces/services/auth/register";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../interfaces/lib/store";
 import { setUserInfo } from "../../lib/features/userSlice/userSlice";
