@@ -10,6 +10,7 @@ import Auth from "../pages/auth/page";
 import AuthLayout from "../layout/AuthLayout";
 import ProtectedRouteForAuth from "../components/helper/ProtectedRouteForAuth";
 import ProtectedRouteForHome from "../components/helper/ProtectedRouteForHome";
+import Link from "../pages/link/page";
 
 type CustomRouteObject = RouteObject & {
   auth?: boolean;
@@ -42,6 +43,10 @@ const routes: CustomRouteObject[] = [
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/home/:id/:username",
+        element: <Link />,
       },
     ],
   },

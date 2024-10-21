@@ -232,7 +232,13 @@ const HomeContainer = () => {
         </button>
 
         {userInfo.fullName && (
-          <button type="button" className="preview_button">
+          <button
+            type="button"
+            className="preview_button"
+            onClick={() =>
+              navigate(`/home/${userInfo.id}/${userInfo.username}`)
+            }
+          >
             Preview
           </button>
         )}
