@@ -4,8 +4,14 @@ import { LinkField, IAllInputValues } from "../../interfaces/components/Input";
 import { useSelector } from "react-redux";
 import { RootState } from "../../interfaces/lib/store";
 import useUpdateData from "../../hooks/api/useUpdateData";
-
+import { generatorSchema } from "../../utils/yup/schema";
+import { MdLogout } from "react-icons/md";
+import useAuth from "../../hooks/context/useAuth";
+import { useNavigate } from "react-router-dom";
+import LoadingImageComponent from "../../components/ui/Loading/Loading";
 const HomeContainer = () => {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
   const { mutateAsync } = useUpdateData();
   const userInfo = useSelector((state: RootState) => state.userInfo);
 
@@ -21,7 +27,6 @@ const HomeContainer = () => {
     handleBlur,
     errors,
     touched,
-    resetForm,
     isSubmitting,
     setFieldValue,
   } = useFormik<IAllInputValues>({
@@ -33,6 +38,7 @@ const HomeContainer = () => {
       links: generatedLinks,
     },
     onSubmit,
+    validationSchema: generatorSchema,
   });
 
   const addLink = () => {
@@ -71,6 +77,17 @@ const HomeContainer = () => {
   return (
     <form onSubmit={handleSubmit} className="home_wrapper">
       <section className="home">
+        <div className="generator_header">
+          <h1>@ {userInfo.username}</h1>
+          <MdLogout
+            className="generator_header__icon"
+            onClick={() => {
+              logout();
+              navigate("/");
+            }}
+          />
+        </div>
+
         <div className="row row1">
           {isObject(values.avatar) ? (
             <figure className="row1__figure">
@@ -109,6 +126,10 @@ const HomeContainer = () => {
             onBlur={handleBlur}
             value={values.fullName}
           />
+
+          {errors.fullName && touched.fullName && (
+            <p className="error_message_generator">{errors.fullName}</p>
+          )}
         </motion.div>
 
         <motion.div
@@ -126,6 +147,10 @@ const HomeContainer = () => {
             onBlur={handleBlur}
             value={values.location}
           />
+
+          {errors.location && touched.location && (
+            <p className="error_message_generator">{errors.location}</p>
+          )}
         </motion.div>
 
         <motion.div
@@ -143,6 +168,10 @@ const HomeContainer = () => {
             onBlur={handleBlur}
             value={values.about}
           />
+
+          {errors.about && touched.about && (
+            <p className="error_message_generator">{errors.about}</p>
+          )}
         </motion.div>
 
         {values.links.map((link, index) => (
@@ -166,6 +195,12 @@ const HomeContainer = () => {
               placeholder="Label"
               className="label_input"
             />
+            {errors.links && touched.links && (
+              <p className="error_message_generator">
+                {errors?.links?.[index]?.["label"]}
+              </p>
+            )}
+
             <input
               type="text"
               name={`links[${index}].url`}
@@ -174,6 +209,12 @@ const HomeContainer = () => {
               placeholder="URL"
               className="url_input"
             />
+
+            {errors.links && touched.links && (
+              <p className="error_message_generator">
+                {errors?.links?.[index]?.["url"]}
+              </p>
+            )}
           </motion.div>
         ))}
         <button type="button" onClick={addLink}>
@@ -181,13 +222,21 @@ const HomeContainer = () => {
         </button>
       </section>
 
-      <button
-        type="submit"
-        className={`generate_button${isSubmitting ? " generating" : ""}`}
-        disabled={isSubmitting}
-      >
-        Generate
-      </button>
+      <div className="home_wrapper__buttons">
+        <button
+          type="submit"
+          className={`generate_button${isSubmitting ? " generating" : ""}`}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? <LoadingImageComponent size="1rem" /> : "Generate"}
+        </button>
+
+        {userInfo.fullName && (
+          <button type="button" className="preview_button">
+            Preview
+          </button>
+        )}
+      </div>
     </form>
   );
 };

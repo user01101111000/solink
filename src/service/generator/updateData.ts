@@ -1,4 +1,3 @@
-import { posts } from "./../../../node_modules/@reduxjs/toolkit/src/query/tests/mocks/handlers";
 import { isObject } from "formik";
 import { IAllInputValues } from "../../interfaces/components/Input";
 import {
@@ -14,8 +13,8 @@ async function updateData({
   values: IAllInputValues;
   otherData: {
     id: string;
-    email?: string;
-    username?: string;
+    email: string;
+    username: string;
   };
 }) {
   let reworkedAvatar: string | File = values.avatar;
@@ -87,6 +86,8 @@ async function updateData({
   };
 
   await getAxiosLinksInstance().patch(`/${otherData.id}`, requestData);
+
+  return { values, otherData, reworkedAvatar };
 }
 
 export default updateData;

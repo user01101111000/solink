@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import { IAllInputValues } from "../../interfaces/components/Input";
 
 const emailRegex = /^\w+([/.-]?\w+)*@\w+([/.-]?\w+)*(\.\w{2,3})+$/;
 const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
@@ -18,4 +19,17 @@ const authSchema = yup.object().shape({
     .required("Password is required"),
 });
 
-export { authSchema };
+const generatorSchema: yup.ObjectSchema<IAllInputValues> = yup.object().shape({
+  fullName: yup.string().required("Full name is required"),
+  location: yup.string().required("Location is required"),
+  about: yup.string().required("About is required"),
+  avatar: yup.mixed(),
+  links: yup.array().of(
+    yup.object().shape({
+      label: yup.string().required("Link label is required"),
+      url: yup.string().required("Link url is required"),
+    })
+  ),
+});
+
+export { authSchema, generatorSchema };

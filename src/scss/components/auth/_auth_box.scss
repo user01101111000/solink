@@ -74,6 +74,7 @@
 
     button {
       @extend .btn;
+      @include centerBoth();
       width: 100%;
       background-color: $button-color-purple;
 

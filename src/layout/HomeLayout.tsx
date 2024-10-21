@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import useRefreshToken from "../hooks/api/useRefreshToken";
 import { decryptToken } from "../utils/auth/cryptoID";
+import LoadingImageComponent from "../components/ui/Loading/Loading";
 
 const HomeLayout = () => {
   const { mutate: refreshToken, isPending } = useRefreshToken();
@@ -22,7 +23,7 @@ const HomeLayout = () => {
 
   return (
     <main className="home_layout">
-      {isPending ? <div>Loading...</div> : <Outlet />}
+      {isPending ? <LoadingImageComponent size="1.2rem" /> : <Outlet />}
     </main>
   );
 };

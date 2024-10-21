@@ -6,6 +6,7 @@ import { LuUser } from "react-icons/lu";
 
 import { authSchema } from "../../utils/yup/schema";
 import { useState } from "react";
+import LoadingImageComponent from "../ui/Loading/Loading";
 
 const AuthBox = (props: IAuthBox) => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -115,7 +116,7 @@ const AuthBox = (props: IAuthBox) => {
           disabled={isSubmitting}
           className={isSubmitting ? "loading_button" : ""}
         >
-          {props.label}
+          {isSubmitting ? <LoadingImageComponent size="1rem" /> : props.label}
         </button>
       </form>
 
