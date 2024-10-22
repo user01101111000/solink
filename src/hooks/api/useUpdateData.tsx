@@ -20,6 +20,7 @@ const useUpdateData = () => {
         location: values.location,
         about: values.about,
         links: values.links,
+        generated: "true",
       };
 
       dispatch(setUserInfo(newUserInfo));

@@ -39,6 +39,7 @@ const useRefreshToken = () => {
         location: result.userInfo.fields.location.stringValue,
         about: result.userInfo.fields.about.stringValue,
         links: result.userInfo.fields.links.arrayValue.values,
+        generated: result.userInfo.fields.generated.stringValue,
       };
 
       dispatch(setUserInfo(userData));

@@ -49,6 +49,9 @@ const register = async (
       about: {
         stringValue: "",
       },
+      generated: {
+        stringValue: "",
+      },
       links: {
         arrayValue: {
           values: [

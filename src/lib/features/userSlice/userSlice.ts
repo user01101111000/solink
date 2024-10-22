@@ -11,6 +11,7 @@ const userInfo: ILinkInfo = {
   location: "",
   about: "",
   links: [{ label: "", url: "" }],
+  generated: "",
 };
 
 const userSlice = createSlice({
@@ -27,6 +28,7 @@ const userSlice = createSlice({
       state.location = action.payload.location;
       state.about = action.payload.about;
       state.links = action.payload.links;
+      state.generated = action.payload.generated;
     },
   },
 });

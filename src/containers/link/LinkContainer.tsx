@@ -16,19 +16,31 @@ const LinkContainer = (props: { data: ILinkData }) => {
     };
   }, []);
 
-  const links = props.data.fields.links.arrayValue.values.map((l: any, i) => (
-    <motion.a
-      key={i}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.7, type: "spring", delay: 0.1 * i }}
-      whileHover={{ scale: 1.05, transition: { duration: 0.2, delay: 0 } }}
-      href={l.mapValue.fields.url.stringValue}
-      target="_blank"
-    >
-      {l.mapValue.fields.label.stringValue}
-    </motion.a>
-  ));
+  const links = props.data.fields.links.arrayValue.values.map(
+    (
+      l: {
+        mapValue: {
+          fields: {
+            label: { stringValue: string };
+            url: { stringValue: string };
+          };
+        };
+      },
+      i
+    ) => (
+      <motion.a
+        key={i}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, type: "spring", delay: 0.01 * i }}
+        whileHover={{ scale: 1.05, transition: { duration: 0.2, delay: 0 } }}
+        href={l.mapValue.fields.url.stringValue}
+        target="_blank"
+      >
+        {l.mapValue.fields.label.stringValue}
+      </motion.a>
+    )
+  );
 
   return (
     <section className="link_container_wrapper">

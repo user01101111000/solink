@@ -234,7 +234,8 @@ const HomeContainer = () => {
         {userInfo.fullName && (
           <button
             type="button"
-            className="preview_button"
+            className={`preview_button${isSubmitting ? " generating" : ""}`}
+            disabled={isSubmitting}
             onClick={() => {
               navigator.clipboard.writeText(
                 window.location.href.split("home")[0] + `@${userInfo.username}`

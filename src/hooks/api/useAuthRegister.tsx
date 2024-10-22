@@ -39,6 +39,7 @@ const useAuthRegister = () => {
         location: result.linkData.fields.location.stringValue,
         about: result.linkData.fields.about.stringValue,
         links: result.linkData.fields.links.arrayValue.values,
+        generated: "",
       };
 
       localStorage.setItem("so_i&r", JSON.stringify(tokens));

@@ -28,7 +28,7 @@ const Link = () => {
     (x) => x.fields.username.stringValue == username?.split("@")[1]
   );
 
-  if (!uniqueData)
+  if (!uniqueData || !uniqueData?.fields?.generated?.stringValue)
     return (
       <div className="link_container_wrapper">
         <h1 className="link_container_error">Link box not found !!!</h1>

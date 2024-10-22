@@ -11,6 +11,7 @@ export interface ILinkInfo {
     label: string;
     url: string;
   }[];
+  generated: string;
 }
 
 export interface IUserInfoFirebase {

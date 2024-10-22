@@ -59,6 +59,9 @@ async function updateData({
       email: {
         stringValue: otherData.email,
       },
+      generated: {
+        stringValue: "true",
+      },
 
       id: {
         stringValue: otherData.id,

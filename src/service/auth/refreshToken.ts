@@ -7,7 +7,7 @@ import {
   getAxiosRefreshTokenInstance,
   getAxiosLinksInstance,
 } from "../axios_instance";
-import { IUserInfoFirebase } from "../../interfaces/lib/features/userSlice/userSlice";
+import { ILinkData } from "../../interfaces/services/auth/register";
 
 async function refreshToken(refresh_token: string) {
   const bodyData: IBodyRefreshToken = {
@@ -20,7 +20,7 @@ async function refreshToken(refresh_token: string) {
 
   const data = response.data;
 
-  const responseUserInfo: AxiosResponse<IUserInfoFirebase> =
+  const responseUserInfo: AxiosResponse<ILinkData> =
     await getAxiosLinksInstance().get("/" + data.user_id);
 
   return { data, userInfo: responseUserInfo.data };

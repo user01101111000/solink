@@ -43,6 +43,9 @@ export interface ILinkData {
     about: {
       stringValue: string;
     };
+    generated: {
+      stringValue: string;
+    };
     links: {
       arrayValue: {
         values: [
